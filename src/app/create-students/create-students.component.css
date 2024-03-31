@@ -1,0 +1,9 @@
+label{
+    width: 120px;
+    margin: 4px;
+    
+}
+form{
+    display: flex;
+    font-size: 11px;
+}

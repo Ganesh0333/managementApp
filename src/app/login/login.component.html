@@ -1,0 +1,33 @@
+  
+    <div class="parent">
+    <div class="black-container">
+      <div class="login-container">
+        <br>
+        <form [formGroup]="loginForm">
+        <h1>Login</h1>
+        <br>
+        <div class="input1-border">
+          <input
+            type="text" placeholder="Email or Phone" formControlName="email"><i class="fa-solid fa-envelope"></i>
+        </div>
+        <br>
+        <div class="input1-border" >
+          <input type="password" placeholder="Password"formControlName="password"><i class="fa-solid fa-lock"></i>
+        </div>
+        <br>
+        <div class="checkbox-css">
+          <div>
+            <input type="checkbox" >
+            <label for="">Reminder me</label>
+          </div>
+          <label for="">Forget Password?</label>
+        </div>
+        <br>
+        <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+      </form>
+      </div>
+    </div>
+  </div>
+
+  
+

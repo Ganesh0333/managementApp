@@ -1,0 +1,24 @@
+.parent{
+    width: 100vw;
+    height: 100vh;
+    background-color: cadetblue;
+    display: flex;
+}
+
+.left-navbar{
+    width: 20%;
+    height: 100%;
+    background-color: rgb(0, 0, 0, 0.6);
+    color: rgb(193, 188, 188);
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.right-container{
+    width: 80%;
+    height: 100%;
+    background-color: whitesmoke;
+    overflow: auto;
+    
+}
+

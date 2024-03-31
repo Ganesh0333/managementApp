@@ -1,0 +1,98 @@
+<h2><b>Students Details:</b></h2>
+<br>
+<form [formGroup]="studentForm">
+<div>
+<label for=""><b>Name:</b></label>
+<input type="text" placeholder="Name" formControlName="name">
+<br>
+<label for=""><b>Gender:</b></label>
+<input type="radio" value="male" formControlName="gender">
+<label for=""><b>Male</b></label>
+<input type="radio" formControlName="gender" value="female">
+<label for=""><b>Female</b></label>
+<br>
+<label for=""><b>Mobile:</b></label>
+<input type="number" placeholder="Number" formControlName="mobile" required min="9000000000" max="1000000000">
+<br>
+<label for=""><b>Email:</b></label>
+<input type="email" placeholder="email@xyz" formControlName="email">
+<br>
+<label for=""><b>Batch:</b></label>
+<input type="date" formControlName="batch">
+<br><br>
+<div formGroupName="address">
+<h2><b>Address:</b></h2>
+<label for=""><b>City:</b> </label>
+<input type="text" placeholder="City" formControlName="city">
+<br>
+<label for=""><b>Mandal:</b> </label>
+<input type="text" placeholder="Mandal" formControlName="mandal">
+<br>
+<label for=""><b>District:</b> </label>
+<input type="text" placeholder="District" formControlName="district">
+<br>
+<label for=""><b>State:</b> </label>
+<input type="text" placeholder="State" formControlName="state">
+<br>
+<label for=""><b>Pincode:</b> </label>
+<input type="text" placeholder="Pincode" formControlName="pincode">
+</div>
+<br>
+<div formGroupName="company">
+<h2><b>Company:</b></h2> 
+<label for=""><b>Name:</b> </label>
+<input type="text" placeholder="Name" formControlName="name">
+<br>
+<label for=""><b>Location:</b> </label>
+<input type="text" placeholder="Location" formControlName="location">
+<br>
+<label for=""><b>Package:</b> </label>
+<input type="text" placeholder="Package" formControlName="package">
+<br>
+<label for=""><b>OfferDate:</b></label>
+<input type="date" formControlName="offerdate">
+</div>
+<br>
+<label for=""><b>Type:</b></label>
+<input type="radio" formControlName="type" value="direct" >
+<label for="">Direct</label>
+<input type="radio" formControlName="type" value="referal">
+<label for="">Referal</label>
+
+<div *ngIf="studentForm.get('type')?.value=='direct'">
+    <label for="">sourceFrom</label>
+    <input type="radio" formControlName="sourceFrom" value="socialMedia">
+    <label for="">social-Media</label>
+    <input type="radio" formControlName="sourceFrom" value="office" >
+    <label for="">Office</label>
+</div>
+<div *ngIf="studentForm.get('type')?.value=='referal'">
+    <label for="">Referal</label>
+    <input type="text">
+</div>
+<br>
+<button type="button" class="btn btn-warning" (click)="submit()">Submit</button>
+</div>
+<div formArrayName="education">
+    <h1>Education Details:</h1>
+    <div *ngFor="let student of educationFormArray.controls,let i=index">
+        <div formGroupName="{{i}}">
+    <h4>Student-{{i+1}}</h4>
+    <label for=""><b>Qualification:</b></label>
+    <input type="text" placeholder="qualification" formControlName="qualification">
+    <br>    
+    <label for=""><b>Year:</b></label>
+    <input type="text" placeholder="year" formControlName="year">
+    <br>
+    <label for=""><b>Percentage:</b></label>
+    <input type="text" placeholder="Percentage" formControlName="percentage">
+    <br><br>
+    <button type="button" class="btn btn-danger" (click)="delete(i)">Delete</button>
+    </div>
+    </div>
+    <br><br>
+    <button type="button" class="btn btn-warning"(click)="add()">Add</button>
+
+</div>
+
+</form>
