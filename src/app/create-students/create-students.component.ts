@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CreateStudentService } from '../create-student.service';
-import { FormArray, FormControl, FormGroup } from '@angular/forms';
+import { EmailValidator, FormArray, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-create-students',
@@ -10,22 +10,22 @@ import { FormArray, FormControl, FormGroup } from '@angular/forms';
 export class CreateStudentsComponent {
 
   public studentForm:FormGroup= new FormGroup({
-    name:new FormControl(),
-    gender:new FormControl(),
-    mobile:new FormControl(),
-    email:new FormControl(),
+    name:new FormControl(null,[Validators.required,Validators.minLength(5)]),
+    gender:new FormControl(null,[Validators.required]),
+    mobile:new FormControl(null,[Validators.required,Validators.min(1000000000),Validators.max(9999999999)]),
+    email:new FormControl(null,[Validators.required,Validators.email]),
     batch:new FormControl(),
     address:new FormGroup({
-      city:new FormControl(),
-      mandal:new FormControl(),
-      district:new FormControl(),
-      state:new FormControl(),
-      pincode:new FormControl(),
+      city:new FormControl(null,[Validators.required]),
+      mandal:new FormControl(null,[Validators.required]),
+      district:new FormControl(null,[Validators.required]),
+      state:new FormControl(null,[Validators.required]),
+      pincode:new FormControl(null,[Validators.required,Validators.min(100000),Validators.max(999999)]),
     }),
     company:new FormGroup({
-      name:new FormControl(),
-      location:new FormControl(),
-      package:new FormControl(),
+      name:new FormControl(null,[Validators.required]),
+      location:new FormControl(null,[Validators.required]),
+      package:new FormControl(null,[Validators.required]),
       offerdate:new FormControl()
     }),
 
@@ -57,9 +57,9 @@ export class CreateStudentsComponent {
   add(){
     this.educationFormArray.push(
       new FormGroup({
-        qualification:new FormControl(),
-        year:new FormControl(),
-        percentage:new FormControl()
+        qualification:new FormControl(null,[Validators.required]),
+        year:new FormControl(null,[Validators.required]),
+        percentage:new FormControl(null,[Validators.required,Validators.min(30),Validators.max(100)])
       })
     )
   }

@@ -4,18 +4,37 @@
 <div>
 <label for=""><b>Name:</b></label>
 <input type="text" placeholder="Name" formControlName="name">
+<div class="error" *ngIf="studentForm.get('name')?.touched">
+    <p class="error" *ngIf="studentForm.get('name')?.errors?.['required']" >Name is required</p>
+    <p class="error" *ngIf="studentForm.get('name')?.errors?.['minlength']" >Min 5 letters </p>
+</div>
+
 <br>
 <label for=""><b>Gender:</b></label>
 <input type="radio" value="male" formControlName="gender">
 <label for=""><b>Male</b></label>
+<div *ngIf="studentForm.get('radio')?.touched">
+</div>
+
 <input type="radio" formControlName="gender" value="female">
 <label for=""><b>Female</b></label>
+<div *ngIf="studentForm.get('radio')?.touched">
+</div>
 <br>
 <label for=""><b>Mobile:</b></label>
-<input type="number" placeholder="Number" formControlName="mobile" required min="9000000000" max="1000000000">
+<input type="number" placeholder="Number" formControlName="mobile">
+<div class="error" *ngIf="studentForm.get('mobile')?.touched">
+     <p class="error" *ngIf="studentForm.get('mobile')?.errors?.['required']">"Required Number"</p>
+     <p class="error" *ngIf="studentForm.get('mobile')?.errors?.['min']">"10 Digits Number"</p>
+     <p class="error" *ngIf="studentForm.get('mobile')?.errors?.['max']">"10 Digits Number"</p>
+</div>
 <br>
 <label for=""><b>Email:</b></label>
 <input type="email" placeholder="email@xyz" formControlName="email">
+<div class="error" *ngIf="studentForm.get('email')?.touched">
+    <p class="error" *ngIf="studentForm.get('email')?.errors?.['required']">"Email Required"</p>
+    <p class="error" *ngIf="studentForm.get('email')?.errors?.['email']">"Email Required"</p>
+</div>
 <br>
 <label for=""><b>Batch:</b></label>
 <input type="date" formControlName="batch">
@@ -24,30 +43,61 @@
 <h2><b>Address:</b></h2>
 <label for=""><b>City:</b> </label>
 <input type="text" placeholder="City" formControlName="city">
+    <div class="error" *ngIf="studentForm.get('address.city')?.touched">
+        <p class="error" *ngIf="studentForm.get('address.city')?.errors?.['required']">"city Required"</p>
+    </div>
 <br>
 <label for=""><b>Mandal:</b> </label>
 <input type="text" placeholder="Mandal" formControlName="mandal">
+<div class="error" *ngIf="studentForm.get('address.mandal')?.touched">
+    <p class="error" *ngIf="studentForm.get('address.mandal')?.errors?.['required']">"Mandal Required"</p>
+</div>
 <br>
 <label for=""><b>District:</b> </label>
 <input type="text" placeholder="District" formControlName="district">
+<div class="error" *ngIf="studentForm.get('address.district')?.touched">
+    <p class="error" *ngIf="studentForm.get('address.district')?.errors?.['required']">"district Required"</p>
+</div>
 <br>
 <label for=""><b>State:</b> </label>
 <input type="text" placeholder="State" formControlName="state">
+    <div class="error" *ngIf="studentForm.get('address.state')?.touched">
+        <p class="error" *ngIf="studentForm.get('address.state')?.errors?.['required']">"State Required"</p>
+
+    </div>
 <br>
 <label for=""><b>Pincode:</b> </label>
 <input type="text" placeholder="Pincode" formControlName="pincode">
+<div class="error" *ngIf="studentForm.get('address.pincode')?.touched">
+    <p class="error" *ngIf="studentForm.get('address.pincode')?.errors?.['required']">"Required Pincode"</p>
+    <p class="error" *ngIf="studentForm.get('address.pincode')?.errors?.['required']">"Required Pincode"</p>
+    
+
+</div>
 </div>
 <br>
 <div formGroupName="company">
 <h2><b>Company:</b></h2> 
 <label for=""><b>Name:</b> </label>
 <input type="text" placeholder="Name" formControlName="name">
+<div class="error" *ngIf="studentForm.get('company.name')?.touched">
+    <p class="error" *ngIf="studentForm.get('company.name')?.errors?.['required']">"Required"</p>
+
+</div>
 <br>
 <label for=""><b>Location:</b> </label>
 <input type="text" placeholder="Location" formControlName="location">
+<div class="error" *ngIf="studentForm.get('company.location')?.touched">
+    <p class="error" *ngIf="studentForm.get('company.location')?.errors?.['required']"></p>
+
+</div>
 <br>
 <label for=""><b>Package:</b> </label>
 <input type="text" placeholder="Package" formControlName="package">
+<div class="error" *ngIf="studentForm.get('company.package')?.touched">
+    <p class="error" *ngIf="studentForm.get('company.package')?.errors?.['required']"></p>
+
+</div>
 <br>
 <label for=""><b>OfferDate:</b></label>
 <input type="date" formControlName="offerdate">
@@ -80,12 +130,23 @@
     <h4>Student-{{i+1}}</h4>
     <label for=""><b>Qualification:</b></label>
     <input type="text" placeholder="qualification" formControlName="qualification">
+    <div class="error" *ngIf="educationFormArray.controls[i]?.get('qualification')?.touched">
+        <p class="error" *ngIf="educationFormArray.controls[i]?.get('qualification')?.errors?.['required']">"required path"</p>
+
+    </div>
     <br>    
     <label for=""><b>Year:</b></label>
     <input type="text" placeholder="year" formControlName="year">
+   
+
+    </div>
     <br>
     <label for=""><b>Percentage:</b></label>
     <input type="text" placeholder="Percentage" formControlName="percentage">
+    <div class="error" *ngIf="educationFormArray.controls[i]?.get('percentage')?.touched">
+        <p class="error" *ngIf="educationFormArray.controls[i]?.get('qualification')?.errors?.['required']">"Required path in %"</p>
+        <p class="error" *ngIf="educationFormArray.controls[i]?.get('qualification')?.errors?.['min']">"Required path in %"</p>
+        <p class="error" *ngIf="educationFormArray.controls[i]?.get('qualification')?.errors?.['max']">"Required path in %"</p>
     <br><br>
     <button type="button" class="btn btn-danger" (click)="delete(i)">Delete</button>
     </div>
@@ -94,5 +155,4 @@
     <button type="button" class="btn btn-warning"(click)="add()">Add</button>
 
 </div>
-
 </form>

@@ -12,6 +12,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { CreateStudentsComponent } from './create-students/create-students.component';
 import { AllStudentsComponent } from './all-students/all-students.component';
+import { DesktopViewComponent } from './desktop-view/desktop-view.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { AllStudentsComponent } from './all-students/all-students.component';
     LoginComponent,
     PageNotFoundComponent,
     CreateStudentsComponent,
-    AllStudentsComponent
+    AllStudentsComponent,
+    DesktopViewComponent
   ],
   imports: [
     BrowserModule,
